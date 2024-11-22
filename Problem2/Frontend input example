@@ -1,0 +1,21 @@
+Frontend shell started. Type commands to interact with the backend.
+simdisk> info
+simdisk> md test
+simdisk> cd /test
+simdisk> newfile file1
+simdisk> dir
+simdisk> cat /file1
+simdisk> copy <host>C:\Users\user\OneDrive\Documents\sample.txt 
+/test/file2
+simdisk> cat /file2
+simdisk> cat /test/file2
+simdisk> dir
+simdisk> copy /test/file1 /test/file3
+simdisk> del file1
+simdisk> del /test/file1
+simdisk> dir
+simdisk> cd /
+simdisk> check
+simdisk> rd /test
+simdisk> check
+simdisk>

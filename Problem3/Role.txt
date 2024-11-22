@@ -1,0 +1,110 @@
+1. Admin Role (Username: admin; Password: admin123)
+Purpose: Administrators have full control over the file system.
+Capabilities:
+View System Information (info command).
+Navigate Directories (cd command).
+Create Directories (md command).
+List Directory Contents (dir command).
+Delete Directories (rd command).
+Create Files (newfile command).
+View File Contents (cat command).
+Copy Files (copy command).
+Delete Files (del command).
+Check File System Consistency (check command).
+Summary:
+Admin users can read, write, and delete files and directories.
+They can perform maintenance tasks like file system checks and directory cleanups.
+
+2. Editor Role (Username: editor; Password: edit123)
+Purpose: Editors can modify and interact with the file system but cannot perform administrative tasks.
+Capabilities:
+View System Information (info command).
+Navigate Directories (cd command).
+Create Directories (md command).
+List Directory Contents (dir command).
+Create Files (newfile command).
+View File Contents (cat command).
+Copy Files (copy command).
+Restricted Actions:
+Cannot delete files or directories (del and rd commands).
+Cannot perform system maintenance (check command).
+Summary:
+Editors can read and write but cannot delete or maintain the file system.
+
+3. Viewer Role (Username: viewer; Password: view123)
+Purpose: Viewers are restricted to read-only access.
+Capabilities:
+View System Information (info command).
+Navigate Directories (cd command).
+List Directory Contents (dir command).
+View File Contents (cat command).
+Restricted Actions:
+Cannot create directories or files (md and newfile commands).
+Cannot delete files or directories (del and rd commands).
+Cannot copy files (copy command).
+Cannot perform system maintenance (check command).
+
+
+Explanation of Roles in Problem 3
+Roles define what operations a user is allowed to perform on the simulated file system. Here’s a detailed breakdown of the roles and their permissions:
+
+1. Admin Role
+Purpose: Administrators have full control over the file system.
+Capabilities:
+View System Information (info command).
+Navigate Directories (cd command).
+Create Directories (md command).
+List Directory Contents (dir command).
+Delete Directories (rd command).
+Create Files (newfile command).
+View File Contents (cat command).
+Copy Files (copy command).
+Delete Files (del command).
+Check File System Consistency (check command).
+Summary:
+Admin users can read, write, and delete files and directories.
+They can perform maintenance tasks like file system checks and directory cleanups.
+
+2. Editor Role
+Purpose: Editors can modify and interact with the file system but cannot perform administrative tasks.
+Capabilities:
+View System Information (info command).
+Navigate Directories (cd command).
+Create Directories (md command).
+List Directory Contents (dir command).
+Create Files (newfile command).
+View File Contents (cat command).
+Copy Files (copy command).
+Restricted Actions:
+Cannot delete files or directories (del and rd commands).
+Cannot perform system maintenance (check command).
+Summary:
+Editors can read and write but cannot delete or maintain the file system.
+
+3. Viewer Role
+Purpose: Viewers are restricted to read-only access.
+Capabilities:
+View System Information (info command).
+Navigate Directories (cd command).
+List Directory Contents (dir command).
+View File Contents (cat command).
+Restricted Actions:
+Cannot create directories or files (md and newfile commands).
+Cannot delete files or directories (del and rd commands).
+Cannot copy files (copy command).
+Cannot perform system maintenance (check command).
+Summary:
+Viewers can only view files, directories, and system information.
+
+Permission Matrix
+Command	  Admin	Editor	Viewer
+info	    ✔	   ✔	   ✔
+cd	        ✔	   ✔	   ✔
+md	        ✔	   ✔	   ✘
+dir	        ✔	   ✔	   ✔
+rd	        ✔      ✘	   ✘
+newfile	    ✔	   ✔	   ✘
+cat	        ✔	   ✔	   ✔
+copy	    ✔	   ✔	   ✘
+del	        ✔	   ✘	   ✘
+check	    ✔	   ✘	   ✘

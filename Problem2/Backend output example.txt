@@ -1,0 +1,32 @@
+SimDisk initialized.
+Backend started. Waiting for commands...
+Disk Size: 100 MB
+Block Size: 1024 Bytes
+Free Blocks: 102400
+Used Blocks: 0
+Root Directory: /
+Directory created: /test
+Changed directory to: /test
+File created: /test/file1
+Contents of /test:
+[FILE] /test/file1
+Error: File does not exist or is a directory.
+File successfully copied to simulated file system: /test/file2
+Error: File does not exist or is a directory.
+File content:
+Hello World
+Contents of /test:
+[FILE] /test/file1
+[FILE] /test/file2
+File successfully copied within simulated file system: /test/file3
+Error: File does not exist or is a directory.
+File deleted: /test/file1
+Contents of /test:
+[FILE] /test/file2
+[FILE] /test/file3
+Changed directory to: /
+File system check complete.
+Used Blocks: 2,Free Blocks: 102398
+Directory deleted: /test
+File system check complete.
+Used Blocks: 0,Free Blocks: 102400

@@ -1,0 +1,11 @@
+compile simdisk.cpp into object:
+g++ -c simdisk.cpp -o simdisk.o
+
+compile and link backend.cpp with the simdisk.o object file:
+g++ backend.cpp simdisk.o -o backend
+
+compile the frontend.cpp into an exe:
+g++ frontend.cpp -o frontend
+
+copy src file to empty file
+copy <host>C:\path\to\sample.txt /path/file

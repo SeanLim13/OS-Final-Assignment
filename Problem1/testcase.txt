@@ -1,0 +1,62 @@
+simdisk> info
+Disk Size: 100 MB
+Block Size: 1024 Bytes
+Free Blocks: 102400
+Used Blocks: 0
+Root Directory: /
+
+simdisk> md test
+Directory created: /test
+
+simdisk> cd /test
+
+simdisk> newfile file1
+File created: /test/file1
+
+simdisk> dir
+Contents of /test:
+[FILE] /test/file1
+
+simdisk> cat file1
+File content:
+
+simdisk> copy "<host>C:\path\to\sample.txt" /test/file2
+File successfully copied to simulated file system: /test/file2
+
+simdisk> dir
+Contents of /test:
+[FILE] /test/file1
+[FILE] /test/file2
+
+simdisk> copy /test/file1 /test/file3
+File successfully copied within simulated file system: /test/file3
+
+simdisk> cat file2
+File content:
+Hello World
+
+simdisk> del file1
+File deleted: /test/file1
+
+simdisk> dir
+Contents of /test:
+[FILE] /test/file2
+[FILE] /test/file3
+
+simdisk> cd /
+simdisk> check   
+File system check complete.
+Used blocks: 2, Free blocks: 102398
+
+simdisk> rd /test
+Are you sure you want to delete this directory and its contents? (yes/no): no 
+Operation canceled.
+simdisk> rd /test
+Are you sure you want to delete this directory and its contents? (yes/no): yes
+Directory deleted: /test
+
+simdisk> check
+File system check complete.
+Used blocks: 0, Free blocks: 102400
+
+simdisk> exit
