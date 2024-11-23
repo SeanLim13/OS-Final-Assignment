@@ -181,14 +181,15 @@ void SimDisk::rd(const string& path, User* user, ostream& out) {
     // Check if the directory exists
     auto it = inodes.find(fullPath);
     if (it == inodes.end() || !it->second.isDirectory) {
-        LeaveCriticalSection(&rwLock); // Exit critical section
         out << "Error: Directory does not exist or is not a directory.\n";
+        LeaveCriticalSection(&rwLock); // Exit critical section
         return;
     }
 
     // Delete the directory and its contents
     deleteDirectoryContents(fullPath);
     inodes.erase(it); // Remove the directory itself
+
     LeaveCriticalSection(&rwLock); // Exit critical section
     out << "Directory deleted: " << fullPath << '\n';
 }

@@ -1,6 +1,6 @@
 Role: Admin
 Frontend is running...
-Enter username: admin 
+Enter username: admin
 Enter password: admin123
 Login successful! Role: Admin
 simdisk> info
@@ -9,105 +9,138 @@ Block Size: 1024 Bytes
 Free Blocks: 102400
 Used Blocks: 0
 Root Directory: /
-simdisk>  md /test
+
+simdisk> md /test
 Directory created: /test
-simdisk>  cd /test
+
+simdisk> cd /test
 Current directory changed to: /test
+
+simdisk> newfile file1
+File created: /test/file1
+
+simdisk> copy <host>C:\Users\user\OneDrive\Documents\sample.txt /test/file2
+File successfully copied to simulated file system: /test/file2
+
+simdisk> copy /test/file1 /test/file3
+File successfully copied within simulated file system: /test/file3
+
 simdisk> md /test/test1
 Directory created: /test/test1
-simdisk>  newfile file1
-File created: /test/file1
-simdisk>  dir 
-Contents of /test:
-[FILE] /test/file1
-[DIR] /test/test1
-simdisk> rd /test/test1
+
 simdisk> dir
-Contents of /test:
-[FILE] /test/file1
-simdisk>  copy <host>C:\Users\user\OneDrive\Documents\sample.txt /test/file2
-File successfully copied to simulated file system: /test/file2
-simdisk>  copy /test/file1 /test/file3
-File successfully copied within simulated file system: /test/file3
-simdisk>  cat /test/file2
-File content:
-Hello World
-simdisk>  dir
 Contents of /test:
 [FILE] /test/file1
 [FILE] /test/file2
 [FILE] /test/file3
-simdisk>  del /test/file1
+[DIR] /test/test1
+
+simdisk> rd /test/test1
+
+simdisk> dir
+Contents of /test:
+[FILE] /test/file1
+[FILE] /test/file2
+[FILE] /test/file3
+
+simdisk> cat /test/file2
+File content:
+Hello World
+
+simdisk> del /test/file1
 File deleted: /test/file1
-simdisk>  check
+
+simdisk> dir
+Contents of /test:
+[FILE] /test/file2   
+[FILE] /test/file3   
+
+simdisk> check       
 File system check complete.
-Used blocks: 2
-Free blocks: 102398
-simdisk>  info
-Disk Size: 100 MB
+Used blocks: 2       
+Free blocks: 102398  
+
+simdisk> info        
+Disk Size: 100 MB    
 Block Size: 1024 Bytes
-Free Blocks: 102398
-Used Blocks: 2
-Root Directory: /
-simdisk>
+Free Blocks: 102398  
+Used Blocks: 2       
+Root Directory: /    
 
 Role: Editor (Based on Admin's inputs)
 Frontend is running...
 Enter username: editor
 Enter password: edit123
 Login successful! Role: Editor
-simdisk>  info
+simdisk> info
 Disk Size: 100 MB
 Block Size: 1024 Bytes
 Free Blocks: 102398
 Used Blocks: 2
 Root Directory: /
-simdisk>  md /test1
-Directory created: /test1
-simdisk>  cd /test
+
+simdisk> cd /
+Current directory changed to: /
+
+simdisk> cd /test
 Current directory changed to: /test
-simdisk>  dir
+
+simdisk> dir
 Contents of /test:
 [FILE] /test/file2
 [FILE] /test/file3
-simdisk>  newfile /test/file1
+
+simdisk> md /test/test1
+Directory created: /test/test1
+
+simdisk> dir
+Contents of /test:
+[FILE] /test/file2
+[FILE] /test/file3
+[DIR] /test/test1
+
+simdisk> newfile file1
 File created: /test/file1
-simdisk>  cat /test/file2
-File content:
+
+simdisk> copy /test/file2 /test/file4     
+File successfully copied within simulated File created: /test/file1
+
+simdisk> cat /test/file4
+File content:        
 Hello World
-simdisk>  copy /test/file2 /test/f
-ile4
-File successfully copied within simulated file system: /test/file4  
-simdisk>  cat /test/file4
-File content:
-Hello World
-simdisk>  del /test/file1
-File deleted: /test/file1
+
+simdisk>
 
 Role: Viewer
+Frontend is running...
 Enter username: viewer
 Enter password: view123
 Login successful! Role: Viewer
-simdisk>  info
+simdisk> info
 Disk Size: 100 MB
 Block Size: 1024 Bytes
-Free Blocks: 102397
-Used Blocks: 3
-Root Directory: /
-simdisk>  cd /test     
+Free Blocks: 102396
+Used Blocks: 4        
+Root Directory: /     
+
+simdisk> cd /test
 Current directory changed to: /test
-simdisk>  dir
-Contents of /test:
-[FILE] /test/file2
-[FILE] /test/file3
-[FILE] /test/file3
-[FILE] /test/file4
-simdisk>  cat /test/file4
+
+simdisk> dir
+Contents of /test:    
+[FILE] /test/file1    
+[FILE] /test/file2    
+[FILE] /test/file3    
+[FILE] /test/file4    
+[DIR] /test/test1            
+
+simdisk> cat /test/file4
 File content:
 Hello World
-simdisk>  cat /test/file3
+
+simdisk> cat /test/file1
 File content:
 
 simdisk> exit
-Backend shutting down...
-Frontend shut down.
+
+Frontend shutting down.

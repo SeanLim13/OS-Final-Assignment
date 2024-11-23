@@ -70,7 +70,9 @@ int main() {
                 simdisk.rd(arg1, &user, response);
 
                 // Send the final result back to the frontend
-                strncpy(shm->result, response.str().c_str(), RESULT_SIZE);
+                strncpy(shm->result, response.str().c_str(), RESULT_SIZE - 1); // Prevent buffer overflow
+                shm->result[RESULT_SIZE - 1] = '\0'; // Null-terminate the string
+
                 shm->isResultReady = true;
                 shm->isCommandReady = false;
             }

@@ -1,52 +1,146 @@
-Role: Admin
 Backend is running and ready to process commands...
+
+
+
+
 Processing command: info (User: admin)
+
+
+
+
+
+
 Processing command: md /test (User: admin)
+
+
 Processing command: cd /test (User: admin)
-Processing command: newfile file1 (User: admin)      
-Processing command: dir (User: admin)
-Processing command: md /test (User: admin)
-Processing command: cd /test (User: admin)
+
+
+Processing command: newfile file1 (User: admin)
+
+
+Processing command: copy <host>C:\Users\user\OneDrive\Documents\sample.txt /test/file2 (User: admin)
+
+
+Processing command: copy /test/file1 /test/file3 (User: admin)
+
+
 Processing command: md /test/test1 (User: admin)
-Processing command: newfile file1 (User: admin)
-Processing command: rd /test/test1 (User: admin)      
-Processing command: cd /test (User: admin)
-Processing command: md /test (User: admin)
-Processing command: md /test (User: admin)
-Processing command: cd /test (User: admin)
-Processing command: newfile file1 (User: admin)      
+
+
 Processing command: dir (User: admin)
-Processing command: copy <host>C:\Users\user\OneDrive\Documents\sample.txt /test/file2 (User: admin)  
-Processing command: md /test (User: admin)
-Processing command: cd /test (User: admin)
-Processing command: newfile file1 (User: admin)
+
+
+
+
+
+
+Processing command: rd /test/test1 (User: admin)
+
 Processing command: dir (User: admin)
-Processing command: copy <host>C:\Users\user\OneDrive\Documents\sample.txt /test/file2 (User: admin)  
-Processing command: copy /test/file1 /test/file3 (User: admin)      
+
+
+
+
+
 Processing command: cat /test/file2 (User: admin)
-Processing command: dir (User: admin)
+
+
+
 Processing command: del /test/file1 (User: admin)
+
+
+Processing command: dir (User: admin)
+
+
+
+
 Processing command: check (User: admin)
+
+
+
+
 Processing command: info (User: admin)
 
-Role: Editor
-Processing command:  info (User: editor)
-Processing command: md /test1 (User: editor)
-Processing command: cd /test (User: editor)
-Processing command: dir (User: editor)
-Processing command: newfile /test/file1 (User: editor)
-Processing command: cat /test/file2 (User: editor)
-Processing command: copy /test/file2 /test/file4 (User: editor)     
-Processing command: cat /test/file4 (User: editor)
-Processing command: del /test/file1 (User: editor)
 
-Role: Viewer
-Processing command:  info (User: viewer)
+
+
+
+
+
+
+
+
+
+Processing command: info (User: editor)
+
+
+
+
+
+
+Processing command: cd / (User: editor)
+
+
+Processing command: cd /test (User: editor)
+
+
+Processing command: dir (User: editor)    
+
+
+
+
+Processing command: md /test/test1 (User: editor)
+
+
+Processing command: dir (User: editor)    
+
+
+
+
+
+Processing command: newfile file1 (User: editor)
+
+
+Processing command: copy /test/file2 /test/file4 (User: editor)
+
+
+Processing command: cat /test/file4 (User: editor)
+
+
+
+
+
+
+
+
+
+
+Processing command: info (User: viewer)   
+
+
+
+
+
+
 Processing command: cd /test (User: viewer)
-Processing command: cd /test (User: viewer)
-Processing command: dir (User: viewer)
+
+
+Processing command: dir (User: viewer) 
+
+
+
+
+
+
+
 Processing command: cat /test/file4 (User: viewer)
-Processing command: cat /test/file3 (User: viewer)
-Processing command: info (User: viewer)
+
+
+
+Processing command: cat /test/file1 (User: viewer)
+
+
 Processing command: exit (User: viewer)
-Backend shut down.
+
+Backend shutting down.

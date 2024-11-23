@@ -81,10 +81,11 @@ int main() {
         }
 
         // Display the result from the backend
-        cout << shm->result;
+        cout << shm->result << '\n';
 
         // Reset result flag
         shm->isResultReady = false;
+        memset(shm->result, 0, RESULT_SIZE);
 
         // Exit the frontend if the "exit" command was issued
         if (command == "exit") {

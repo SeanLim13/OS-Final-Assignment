@@ -13,6 +13,7 @@
         "vector": "cpp",
         "initializer_list": "cpp",
         "functional": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "iostream": "cpp"
     }
 }
