@@ -1,0 +1,11 @@
+Path to sample file: 
+<host>C:\Users\user\OneDrive\Documents\sample.txt
+
+compile simdisk.cpp into object:
+g++ -c simdisk.cpp -o simdisk.o
+
+compile and link backend.cpp with the simdisk.o object file:
+g++ backend.cpp simdisk.o -o backend
+
+compile the frontend.cpp into an exe:
+g++ frontend.cpp -o frontend

@@ -13,9 +13,16 @@ simdisk>  md /test
 Directory created: /test
 simdisk>  cd /test
 Current directory changed to: /test
+simdisk> md /test/test1
+Directory created: /test/test1
 simdisk>  newfile file1
 File created: /test/file1
 simdisk>  dir 
+Contents of /test:
+[FILE] /test/file1
+[DIR] /test/test1
+simdisk> rd /test/test1
+simdisk> dir
 Contents of /test:
 [FILE] /test/file1
 simdisk>  copy <host>C:\Users\user\OneDrive\Documents\sample.txt /test/file2
@@ -29,16 +36,6 @@ simdisk>  dir
 Contents of /test:
 [FILE] /test/file1
 [FILE] /test/file2
-[FILE] /test/file3
-simdisk>  del /test/file1
-File deleted: /test/file1
-simdisk>  check
-[FILE] /test/file3
-simdisk>  del /test/file1
-File deleted: /test/file1
-[FILE] /test/file3
-simdisk>  del /test/file1
-[FILE] /test/file3
 [FILE] /test/file3
 simdisk>  del /test/file1
 File deleted: /test/file1

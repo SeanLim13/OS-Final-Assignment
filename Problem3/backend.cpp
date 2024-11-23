@@ -49,38 +49,56 @@ int main() {
 
             if (cmd == "info") {
                 simdisk.info(&user, result);
-            } else if (cmd == "cd") {
+            } 
+            else if (cmd == "cd") {
                 ss >> arg1;
                 simdisk.cd(arg1, &user, result);
-            } else if (cmd == "md") {
+            } 
+            else if (cmd == "md") {
                 ss >> arg1;
                 simdisk.md(arg1, &user, result);
-            } else if (cmd == "dir") {
+            } 
+            else if (cmd == "dir") {
                 ss >> arg1;
                 simdisk.dir(arg1, &user, result);
-            } else if (cmd == "rd") {
+            } 
+            else if (cmd == "rd") {
+                ostringstream response;
                 ss >> arg1;
-                simdisk.rd(arg1, &user, result);
-            } else if (cmd == "newfile") {
+
+                // Process the directory deletion directly
+                simdisk.rd(arg1, &user, response);
+
+                // Send the final result back to the frontend
+                strncpy(shm->result, response.str().c_str(), RESULT_SIZE);
+                shm->isResultReady = true;
+                shm->isCommandReady = false;
+            }
+            else if (cmd == "newfile") {
                 ss >> arg1;
                 simdisk.newfile(arg1, &user, result);
-            } else if (cmd == "cat") {
+            } 
+            else if (cmd == "cat") {
                 ss >> arg1;
                 simdisk.cat(arg1, &user, result);
-            } else if (cmd == "copy") {
+            } 
+            else if (cmd == "copy") {
                 ss >> arg1 >> arg2;
                 simdisk.copy(arg1, arg2, &user, result);
-            } else if (cmd == "del") {
+            } 
+            else if (cmd == "del") {
                 ss >> arg1;
                 simdisk.del(arg1, &user, result);
-            } else if (cmd == "check") {
+            } 
+            else if (cmd == "check") {
                 simdisk.check(&user, result);
-            } else if (cmd == "exit") {
-                result << "Backend shutting down...\n";
+            } 
+            else if (cmd == "exit") {
                 strncpy(shm->result, result.str().c_str(), RESULT_SIZE);
                 shm->isResultReady = true;
                 break;
-            } else {
+            } 
+            else {
                 result << "Error: Unknown command.\n";
             }
 
@@ -97,7 +115,7 @@ int main() {
     UnmapViewOfFile(shm);
     CloseHandle(hMapFile);
 
-    cout << "Backend shut down.\n";
+    cout << "Backend shutting down.\n";
 
     return 0;
 }

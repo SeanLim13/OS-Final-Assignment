@@ -72,18 +72,22 @@ INode* SimDisk::findINode(const string& path) {
 
 void SimDisk::deleteDirectoryContents(const string& dirPath) {
     for (auto it = inodes.begin(); it != inodes.end();) {
+        // Check if the entry is within the directory being deleted
         if (it->first.find(dirPath + "/") == 0) {
             if (!it->second.isDirectory) {
+                // Free the blocks allocated to the file
                 for (int blockIndex : it->second.dataBlocks) {
                     freeBlock(blockIndex);
                 }
             }
-            it = inodes.erase(it);
-        } else {
-            ++it;
+            it = inodes.erase(it); // Erase the entry
+        } 
+        else {
+            ++it; // Move to the next entry
         }
     }
 }
+
 
 // Commands Implementation
 
@@ -96,7 +100,8 @@ void SimDisk::info(User* user, ostream& out) {
         out << "Used Blocks: " << superblock.totalBlocks - superblock.freeBlocks << '\n';
         out << "Root Directory: " << "/" << '\n';
         LeaveCriticalSection(&rwLock);
-    } else {
+    } 
+    else {
         out << "Error: Permission denied.\n";
     }
 }
@@ -116,7 +121,8 @@ void SimDisk::cd(const string& path, User* user, ostream& out) {
         currentDir = fullPath;
         LeaveCriticalSection(&rwLock);
         out << "Current directory changed to: " << currentDir << "\n";
-    } else {
+    } 
+    else {
         out << "Error: Permission denied.\n";
     }
 }
@@ -154,43 +160,37 @@ void SimDisk::dir(const string& path, User* user, ostream& out) {
             }
         }
         LeaveCriticalSection(&rwLock);
-    } else {
+    } 
+    else {
         out << "Error: Permission denied.\n";
     }
 }
 
+
+
 void SimDisk::rd(const string& path, User* user, ostream& out) {
+    // Check if the user is an Admin
     if (user->role != Admin) {
         out << "Error: Only admin users can delete directories.\n";
         return;
     }
 
-    EnterCriticalSection(&rwLock);
+    EnterCriticalSection(&rwLock); // Enter critical section
     string fullPath = (path[0] == '/') ? path : currentDir + "/" + path;
 
+    // Check if the directory exists
     auto it = inodes.find(fullPath);
     if (it == inodes.end() || !it->second.isDirectory) {
-        LeaveCriticalSection(&rwLock);
-        out << "Error: Directory does not exist.\n";
+        LeaveCriticalSection(&rwLock); // Exit critical section
+        out << "Error: Directory does not exist or is not a directory.\n";
         return;
     }
 
-    out << "Are you sure you want to delete this directory and its contents? (yes/no): ";
-    LeaveCriticalSection(&rwLock); // Temporarily release lock for user input
-
-    string confirmation;
-    cin >> confirmation;
-
-    EnterCriticalSection(&rwLock);
-    if (confirmation == "yes") {
-        deleteDirectoryContents(fullPath); // Delete all contents
-        inodes.erase(it);                  // Delete the directory itself
-        LeaveCriticalSection(&rwLock);
-        out << "Directory deleted: " << fullPath << "\n";
-    } else {
-        LeaveCriticalSection(&rwLock);
-        out << "Operation canceled.\n";
-    }
+    // Delete the directory and its contents
+    deleteDirectoryContents(fullPath);
+    inodes.erase(it); // Remove the directory itself
+    LeaveCriticalSection(&rwLock); // Exit critical section
+    out << "Directory deleted: " << fullPath << '\n';
 }
 
 void SimDisk::newfile(const string& path, User* user, ostream& out) {
@@ -232,7 +232,8 @@ void SimDisk::cat(const string& path, User* user, ostream& out) {
         }
         out << "\n";
         LeaveCriticalSection(&rwLock);
-    } else {
+    } 
+    else {
         out << "Error: Permission denied.\n";
     }
 }
@@ -281,7 +282,8 @@ void SimDisk::copy(const string& src, const string& dest, User* user, ostream& o
         inodes[fullDest] = {fullDest, false, (int)allocatedBlocks.size() * BLOCK_SIZE, allocatedBlocks};
         LeaveCriticalSection(&rwLock);
         out << "File successfully copied to simulated file system: " << fullDest << '\n';
-    } else if (dest.rfind("<host>", 0) == 0) {
+    } 
+    else if (dest.rfind("<host>", 0) == 0) {
         // Copy from simulated file system to host file system
         string fullSrc = (src[0] == '/') ? src : currentDir + "/" + src;
         INode* fileNode = findINode(fullSrc);
@@ -305,7 +307,8 @@ void SimDisk::copy(const string& src, const string& dest, User* user, ostream& o
 
         LeaveCriticalSection(&rwLock);
         out << "File successfully copied to host file system: " << hostPath << '\n';
-    } else {
+    } 
+    else {
         // Copy within simulated file system
         string fullSrc = (src[0] == '/') ? src : currentDir + "/" + src;
         INode* srcNode = findINode(fullSrc);
@@ -344,7 +347,7 @@ void SimDisk::copy(const string& src, const string& dest, User* user, ostream& o
 }
 
 void SimDisk::del(const string& path, User* user, ostream& out) {
-    if (user->role != Editor && user->role != Admin) {
+    if (user->role != Admin) {
         out << "Error: Only editors or admins can delete files.\n";
         return;
     }

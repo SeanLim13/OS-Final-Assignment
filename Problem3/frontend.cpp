@@ -19,11 +19,14 @@ bool login(SharedMemory* shm) {
     // Hardcoded users (should match backend definitions)
     if (username == "admin" && password == "admin123") {
         shm->role = Admin;
-    } else if (username == "editor" && password == "edit123") {
+    } 
+    else if (username == "editor" && password == "edit123") {
         shm->role = Editor;
-    } else if (username == "viewer" && password == "view123") {
+    } 
+    else if (username == "viewer" && password == "view123") {
         shm->role = Viewer;
-    } else {
+    } 
+    else {
         cout << "Error: Invalid username or password.\n";
         return false;
     }
@@ -63,7 +66,6 @@ int main() {
         // Display prompt and get user input
         cout << "simdisk> ";
         string command;
-        cin.ignore();
         getline(cin, command);
 
         // Write the command to shared memory
@@ -87,11 +89,12 @@ int main() {
         }
     }
 
+
     // Clean up
     UnmapViewOfFile(shm);
     CloseHandle(hMapFile);
 
-    cout << "Frontend shut down.\n";
+    cout << "Frontend shutting down.\n";
 
     return 0;
 }
