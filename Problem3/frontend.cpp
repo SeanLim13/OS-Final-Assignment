@@ -3,6 +3,7 @@
 #include <cstring>
 #include <windows.h> // For Windows shared memory
 #include "shared_memory.h"
+#include <limits>
 
 using namespace std;
 
@@ -15,6 +16,8 @@ bool login(SharedMemory* shm) {
     cout << "Enter password: ";
     string password;
     cin >> password;
+
+    cin.ignore(1000, '\n');
 
     // Hardcoded users (should match backend definitions)
     if (username == "admin" && password == "admin123") {
